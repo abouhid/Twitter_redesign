@@ -1,10 +1,10 @@
-<%= form_with(model: tweet, local: true) do |form| %>
-  <% if tweet.errors.any? %>
+<%= form_with(model: @tweet, local: true) do |form| %>
+  <% if @tweet.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(tweet.errors.count, "error") %> prohibited this tweet from being saved:</h2>
+      <h2><%= pluralize(@tweet.errors.count, "error") %> prohibited this tweet from being saved:</h2>
 
       <ul>
-        <% tweet.errors.full_messages.each do |message| %>
+        <% @tweet.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
@@ -12,11 +12,10 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
+  <div class="control">
+    <%=  form.text_field :tweet, label: "Compose new Tweet", class: "input ",
+     wrapper: false, label_html: {class: "label"}, placeholder: "Compose a new tweeet...", autofocus: true %>
   </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+</div>
+<%= form.button :submit, class: "button is-info" %>
 <% end %>
