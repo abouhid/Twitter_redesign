@@ -1,19 +1,8 @@
     <div class="columns">
-    	<%
-=begin%>
- <% if user_signed_in? %>
-    		<%= render 'profile' %>
-    	<% else %>
-       <%= render 'trends' %>
-      <% end %> 
-<%
-=end%>
-<%= render 'profile' %>
-       <%#= link_to 'Create a tweet', new_tweet_path %>
-     
+ 
+  	<%= render 'profile' %>
        <%= render 'feed' %>
   
      
  <%= render 'who_to_follow' %> 
-
     </div>

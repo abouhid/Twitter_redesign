@@ -1,6 +1,6 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only: [:show, :edit, :update, :destroy]
-  # before_action :authenticate_user!, except: %i[index show]
+  before_action :authenticate_user!
 
   # GET /tweets
   # GET /tweets.json
@@ -16,7 +16,9 @@ class TweetsController < ApplicationController
 
   # GET /tweets/new
   def new
-    @tweet = Tweet.new
+    @tweet = current_user.tweets.build
+
+    # @tweet = Tweet.new
   end
 
   # GET /tweets/1/edit
@@ -26,7 +28,8 @@ class TweetsController < ApplicationController
   # POST /tweets
   # POST /tweets.json
   def create
-    @tweet = Tweet.new(tweet_params)
+    # @tweet = Tweet.new(tweet_params)
+    @tweet = current_user.tweets.build(tweet_params)
 
     respond_to do |format|
       if @tweet.save
@@ -47,7 +50,7 @@ class TweetsController < ApplicationController
         format.html { redirect_to request.referrer, notice: 'Tweet was successfully updated.' }
         format.json { render :show, status: :ok, location: @tweet }
       else
-        format.html { render :edit }
+        format.html { redirect_to request.referrer }
         format.json { render json: @tweet.errors, status: :unprocessable_entity }
       end
     end
