@@ -47,7 +47,7 @@ class TweetsController < ApplicationController
   def update
     respond_to do |format|
       if @tweet.update(tweet_params)
-        format.html { redirect_to request.referrer, notice: 'Tweet was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'Tweet was successfully updated.' }
         format.json { render :show, status: :ok, location: @tweet }
       else
         format.html { redirect_to request.referrer }
@@ -59,6 +59,7 @@ class TweetsController < ApplicationController
   # DELETE /tweets/1
   # DELETE /tweets/1.json
   def destroy
+    @tweet = Tweet.find(params[:id])
     @tweet.destroy
     respond_to do |format|
       format.html {redirect_to request.referrer, notice: 'Tweet was successfully destroyed.' }
