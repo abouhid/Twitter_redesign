@@ -27,8 +27,8 @@
             <div class="media-content">
                 <div class="content">
 
-                    <strong><%= tweet.user.name %></strong><br />
-                    <small><%= tweet.user.username %></small><br />
+          <%= link_to tweet.user.name, user_path(tweet.user), class: 'post-author' %><br>
+                    <small><%= link_to tweet.user.username, user_path(tweet.user), class: 'post-author' %></small><br />
 
                     <p><%= tweet.content %></p>
                 </div>
@@ -49,6 +49,10 @@
                             <i class="fa fa-trash-o" aria-hidden="true"></i>
                         </span>
                         <% end %>
+
+                          <%#= link_to 'Add Friend', follows_path(followed_user_id: tweet.user_id), method: :post %>
+
+
                         <div class='post-comments-section'>
                             <%= render partial: 'replies/reply', collection: tweet.replies %>
 
