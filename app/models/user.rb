@@ -7,7 +7,9 @@ validates :email, uniqueness: true
 validates :username, presence: true, uniqueness: { case_sensitive: false }
 validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
 
-  has_many :tweets
+has_many :tweets
+has_many :replies, dependent: :destroy
+has_many :likes, dependent: :destroy
 
   attr_writer :login
 

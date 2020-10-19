@@ -19,11 +19,16 @@
  .side-panel {
     width: 15%;
     background-color: hsl(0, 0%, 21%);
+     a{
+      color:white;
+   }
  }
  .panel-block {
      border-bottom:0!important;
      color:white;
  }
+
  .panel {
     box-shadow: 0;
  }
+
