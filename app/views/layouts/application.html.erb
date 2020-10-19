@@ -23,47 +23,54 @@
         <p class="alert"><%= alert %></p>
     </div>
     <% end %>
-    <nav class="navbar is-primary">
-        <div class="navbar-brand">
-            <%= link_to root_path, class: "navbar-item" do %>
-            <h1 class="title is-5">Tweetify</h1>
-            <% end %>
-            <div class="navbar-burger burger" data-target="navbarExample">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+    <div class="columns">
+        <div class="column is-one-quarter px-0 py-0">
+            <%= render 'tweets/profile' %>
         </div>
+    <div class='column px-0'>
+        <nav class="navbar is-primary">
+            <div class="navbar-brand">
+                <%= link_to root_path, class: "navbar-item" do %>
+                <h1 class="title is-5">Tweetify</h1>
+                <% end %>
+                <div class="navbar-burger burger" data-target="navbarExample">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
 
-        <div id="navbarExample" class="navbar-menu">
-            <div class="navbar-end">
-                <div class="navbar-item">
-                    <div class="field is-grouped mb-0">
+            <div id="navbarExample" class="navbar-menu">
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <div class="field is-grouped mb-0">
 
-                       
-                        <% if user_signed_in? %>
-                        <p class="control user_name">
-                            <%= link_to current_user.name, edit_user_registration_path, class: "button is-primary " %>
-                        </p>
-                        <p>
-                            <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"button is-danger" %>
-                        </p>
-                        <% else %>
-                        <p class="control">
-                            <%= link_to 'Sign In', new_user_session_path, class: "button is-primary" %>
-                        </p>
-                        <p class="control">
-                            <%= link_to 'Sign Up', new_user_registration_path, class: "button is-primary" %>
-                        </p>
-                        <% end %>
 
+                            <% if user_signed_in? %>
+                            <p class="control user_name">
+                                <%= link_to current_user.name, edit_user_registration_path, class: "button is-primary " %>
+                            </p>
+                            <p>
+                                <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"button is-danger" %>
+                            </p>
+                            <% else %>
+                            <p class="control">
+                                <%= link_to 'Sign In', new_user_session_path, class: "button is-primary" %>
+                            </p>
+                            <p class="control">
+                                <%= link_to 'Sign Up', new_user_registration_path, class: "button is-primary" %>
+                            </p>
+                            <% end %>
+
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </nav>
+        </nav>
 
-    <%= yield %>
+        <%= yield %>
+    </div>
+</div>
 </body>
 
 </html>
