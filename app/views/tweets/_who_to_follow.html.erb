@@ -1,57 +1,27 @@
 <div class="column is-one-quarter">
   <nav class="panel">
         <p class="panel-heading">Who To Follow</p>
+        <% @users.sort_by(&:created_at).reverse_each.each do |user| %>
+     <% unless current_user.following?(user) || current_user == user %>
+       
+        <div class="nav-item">
+        <article class="media">
+            <div class="media-left">
+            <figure class="image is-32x32">
+                <img src="https://bulma.io/images/placeholders/64x64.png" />
+            </figure>
+            </div>
+            <div class="media-content">
+            <div class="content">
+             <%= link_to user.name, user_path(user) %><br>
+              <small><%= link_to user.username, user_path(user) %></small><br />
+                </p>
+            </div>
+            </div>
+        </article>
+        </div>
+    <%end %>
+        <%end %>
 
-        <div class="panel-block">
-        <article class="media">
-            <div class="media-left">
-            <figure class="image is-32x32">
-                <img src="https://bulma.io/images/placeholders/64x64.png" />
-            </figure>
-            </div>
-            <div class="media-content">
-            <div class="content">
-                <p>
-                <strong>John Smith</strong>
-                <small>@johnsmith</small>
-                </p>
-            </div>
-            </div>
-        </article>
-        </div>
-        <div class="panel-block">
-        <article class="media">
-            <div class="media-left">
-            <figure class="image is-32x32">
-                <img src="https://bulma.io/images/placeholders/64x64.png" />
-            </figure>
-            </div>
-            <div class="media-content">
-            <div class="content">
-                <p>
-                <strong>John Smith</strong>
-                <small>@johnsmith</small>
-                </p>
-            </div>
-            </div>
-        </article>
-        </div>
-        <div class="panel-block">
-        <article class="media">
-            <div class="media-left">
-            <figure class="image is-32x32">
-                <img src="https://bulma.io/images/placeholders/64x64.png" />
-            </figure>
-            </div>
-            <div class="media-content">
-            <div class="content">
-                <p>
-                <strong>John Smith</strong>
-                <small>@johnsmith</small>
-                </p>
-            </div>
-            </div>
-        </article>
-        </div>
   </nav>
 </div>

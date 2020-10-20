@@ -13,16 +13,22 @@
             </div>
         </article>
     </div>
+
+
     <div class="box">
+
         <% @tweets.each do |tweet| %>
+        <% if current_user.following?(tweet.user) || tweet.user == current_user %>
 
         <article class="media">
             <div class="media-left">
                 <figure class="image is-64x64">
                     <%= gravatar_image_tag(tweet.user.email, size: 64, alt: tweet.user.name) %>
 
+
                 </figure>
             </div>
+
             <div class="media-content">
                 <div class="content">
 
@@ -49,16 +55,14 @@
                         </span>
                         <% end %>
 
-                        <%#= link_to 'Add Friend', follows_path(followed_user_id: tweet.user_id), method: :post %>
-
 
                         <div class='post-comments-section'>
                             <%= render partial: 'replies/reply', collection: tweet.replies %>
 
                             <%= form_for(tweet.replies.new, url: tweet_replies_path(tweet)) do |form| %>
                             <%= form.text_field :content, label: "Tweet about it", input_html: { class: "input "},
-                                                wrapper: false, label_html: {class: "label"}, placeholder: "What's on your mind?",
-                                                autofocus: true %>
+                                                  wrapper: false, label_html: {class: "label"}, placeholder: "What's on your mind?",
+                                                  autofocus: true %>
                             <%#= form.text_field :content, id: :reply_content, class: 'form-control', placeholder: 'Add new reply' %>
                             <%= form.button :submit, class: "button is-primary" %>
                             <% end %>
@@ -66,8 +70,10 @@
                     </div>
                 </nav>
             </div>
-        </article>
 
-        <% end %> 
-        </div>
+        </article>
+        <% end %>
+
+        <% end %>
+    </div>
 </div>

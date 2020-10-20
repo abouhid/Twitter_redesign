@@ -22,7 +22,15 @@ class User < ApplicationRecord
   has_many :followers, through: :reverse_relationships, source: :follower
 
   def following?(other_user)
-    relationships.find_by_followed_id(other_user.id)
+    relationships.find_by_followed_id(other_user)
+  end
+
+  def not_followed(user) def following?(other_user)
+    relationships.find_by_followed_id(other_user)
+  end
+
+  def not_followed(user)
+    User.where.not(follower_id: user)
   end
 
   def follow!(other_user)
@@ -32,20 +40,16 @@ class User < ApplicationRecord
   def unfollow!(other_user)
     relationships.find_by_followed_id(other_user.id).destroy
   end
+    User.where.not(follower_id: user)
+  end
 
-  # Will return an array of follows for the given user instance
-  #  has_many :received_follows, foreign_key: :followed_user_id, class_name: "Follow"
+  def follow!(other_user)
+    relationships.create!(followed_id: other_user.id)
+  end
 
-  #  # Will return an array of users who follow the user instance
-  #  has_many :followers, through: :received_follows, source: :follower
-
-  #  #####################
-
-  #  # returns an array of follows a user gave to someone else
-  #  has_many :given_follows, foreign_key: :follower_id, class_name: "Follow"
-
-  #  # returns an array of other users who the user has followed
-  #  has_many :followings, through: :given_follows, source: :followed_user
+  def unfollow!(other_user)
+    relationships.find_by_followed_id(other_user.id).destroy
+  end
 
   attr_writer :login
 
