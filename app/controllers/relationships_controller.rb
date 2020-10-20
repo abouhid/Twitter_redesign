@@ -1,6 +1,7 @@
-class RelationshipsController < ApplicationController
+# frozen_string_literal: true
 
-def create
+class RelationshipsController < ApplicationController
+  def create
     @user = User.find(params[:relationship][:followed_id])
     current_user.follow!(@user)
     redirect_to @user

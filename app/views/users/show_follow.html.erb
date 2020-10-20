@@ -2,10 +2,10 @@
 <div class="row">
   <aside class="span4">
     <section>
-      <%= gravatar_for @user %>
+      <%#= gravatar_for @user %>
       <h1><%= @user.name %></h1>
       <span><%= link_to "view my profile", @user %></span>
-      <span><b>Microposts:</b> <%= @user.tweets.count %></span>
+      <span><b>Tweets:</b> <%= @user.tweets.count %></span>
     </section>
     <section>
       <%= render 'shared/stats' %>

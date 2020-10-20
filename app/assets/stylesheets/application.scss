@@ -19,10 +19,19 @@
  .side-panel {
     width: 15%;
     background-color: hsl(0, 0%, 21%);
-     a{
+     a {
       color:white;
    }
  }
+
+.prof-pic {
+    align-items: stretch;
+    display: flex;
+    a {
+       width:59%
+    }
+}
+
  .panel-block {
      border-bottom:0!important;
      color:white;
@@ -32,3 +41,6 @@
     box-shadow: 0;
  }
 
+.stats a:hover{
+   background-color: white;
+}
