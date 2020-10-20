@@ -8,5 +8,4 @@ module UsersHelper
   def not_followed(user)
     User.where.not(follower_id: user)
   end
-
 end

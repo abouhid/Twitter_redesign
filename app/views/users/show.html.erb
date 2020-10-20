@@ -1,11 +1,26 @@
-<section class="user-section">
-  <h2><%= "Name: #{@user.name}" %></h2>
+<div class="columns">
+ 
+ <div class="column px-5">
 
+<section class="users-section">
+ <% unless current_user== @user %>
+  <%= @user.username %> 
+  <%= render 'follow_form' %>
+  <%end %>
     <article class="timeline">
    
     <h3>Recent posts:</h3>
     <ul class="posts">
+    <% unless @user.tweets.empty? %>
       <%= render 'tweets/tweet' %>
+        <%else %>
+      <p>This user does not have posts.</p>
+        <%end %>
+
     </ul>
   </article>
 </section>
+    </div>
+     <%= render 'profile' %> 
+
+    </div>

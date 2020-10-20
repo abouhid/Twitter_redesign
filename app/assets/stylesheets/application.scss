@@ -19,6 +19,7 @@
  .side-panel {
     width: 15%;
     background-color: hsl(0, 0%, 21%);
+    min-height: 603px;
      a {
       color:white;
    }
@@ -94,4 +95,21 @@
     padding-top: calc(0.5em - 1px);
     position: relative;
     vertical-align: top;
+}
+
+.wtf-panel {
+   flex: none;
+   width: 30%;
+}
+
+.wtf {
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+
+   .wtf-f {
+      display: flex;
+    justify-content: space-evenly;
+    width: -webkit-fill-available;
+   }
 }

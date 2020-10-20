@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class RepliesController < ApplicationController
-  def new 
+  def new
     @reply = Reply.find(params[:id])
   end
 
@@ -9,7 +9,7 @@ class RepliesController < ApplicationController
     @reply = Reply.new(reply_params)
     @reply.tweet_id = params[:tweet_id]
     @reply.user = current_user
-    
+
     if @reply.save
       redirect_to request.referrer, notice: 'reply was successfully created.'
     else

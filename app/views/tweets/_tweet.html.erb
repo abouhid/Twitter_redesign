@@ -1,13 +1,12 @@
   <div class="box">
 
       <% @tweets.each do |tweet| %>
-      <%# if current_user.following?(tweet.user) || tweet.user == current_user %>
+      <% if current_user.following?(tweet.user) || tweet.user == current_user %>
 
       <article class="media">
           <div class="media-left">
               <figure class="image is-64x64">
                   <%= gravatar_image_tag(tweet.user.email, size: 64, alt: tweet.user.name) %>
-
 
               </figure>
           </div>
@@ -64,5 +63,5 @@
       </article>
       <% end %>
 
-      <%# end %>
+      <% end %>
   </div>

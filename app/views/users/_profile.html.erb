@@ -1,0 +1,32 @@
+<div class="column wtf-panel pl-0 pr-6 py-5">
+    <nav class="panel">
+        <p class="panel-heading">Who To Follow</p>
+
+
+        <article class="px-1 py-2 wtf">
+            <div class="media-content ">
+                <figure class="image is-64x64">
+                    <%= gravatar_image_tag(@user.email, size: 64, alt: @user.name) %>
+                </figure>
+                <p class="  "><%= @user.name  %></p>
+                <p class="  "><%= @user.username  %></p>
+            </div>
+
+                <div class="wtf-f media-content mt-2">
+                    <div class="">
+                        <p class="heading">Tweets</p>
+                        <p class="has-text-centered	 "><%= @user.tweets.count  %></p>
+                    </div>
+                    <div class="">
+                        <p class="heading">Following</p>
+                        <p class=" has-text-centered	"><%= @user.followed_users.count  %></p>
+                    </div>
+                    <div class="">
+                        <p class="heading">Followers</p>
+                        <p class="has-text-centered	"><%= @user.followers.count  %></p>
+                    </div>
+                </div>
+
+        </article>
+    </nav>
+</div>
