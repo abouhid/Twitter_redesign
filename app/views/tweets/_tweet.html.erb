@@ -35,21 +35,23 @@
                       <span class="icon">
                           <i class="fa fa-trash-o" aria-hidden="true"></i>
                       </span>
-                      <% end %></div>
+                      <% end %>
+                  </div>
               </div>
-              <nav class="level">
+              <nav class="block">
 
                   <div class='post-comments-section'>
-                      <div>
-                          <%= render partial: 'replies/reply', collection: tweet.replies %></div>
+                      <div class="pl-2">
+                          <%= render partial: 'replies/reply', collection: tweet.replies %>
 
-                      <%= form_for(tweet.replies.new, url: tweet_replies_path(tweet)) do |form| %>
-                      <%= form.text_field :content, label: "Tweet about it", input_html: { class: "input "},
-                                                  wrapper: false, label_html: {class: "label"}, placeholder: "What's on your mind?",
-                                                  autofocus: true %>
-                      <%#= form.text_field :content, id: :reply_content, class: 'form-control', placeholder: 'Add new reply' %><br>
-                      <%= form.button :submit, class: "button is-primary mt-1" %>
-                      <% end %>
+                          <%= form_for(tweet.replies.new, url: tweet_replies_path(tweet)) do |form| %>
+                          <div class="reply-input"><%= form.text_field :content, label: "Tweet about it", input_html: { class: "input"},
+                                                  wrapper: false, label_html: {class: "label"}, placeholder: "Reply this tweet.",
+                                                  autofocus: true %></div>
+                          <%#= form.text_field :content, id: :reply_content, class: 'form-control', placeholder: 'Add new reply' %><br>
+                          <%= form.button :submit, class: "button is-primary mt-1" %>
+                          <% end %>                
+                      </div>
                   </div>
 
               </nav>

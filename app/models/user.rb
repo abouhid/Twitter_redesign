@@ -22,9 +22,7 @@ class User < ApplicationRecord
   has_many :followers, through: :reverse_relationships, source: :follower
 
   def followed_also?(user)  
-    self.follower_ids
-    
-
+    self.follower_ids    
   end
 
   def following?(other_user)
