@@ -1,7 +1,7 @@
 <div class="column px-0">
     <nav class="panel pl-3">
        
-
+  <% if user_signed_in? %>
         <div class="prof-pic">
          <%= gravatar_image_tag(current_user.email, size: 64, alt: current_user.name) %>
         
@@ -29,5 +29,6 @@
         <a href="#" ><%= link_to 'PROFILE', root_path, class: "navbar-item" %></a>       
 
         </div>
+          <% end%>
     </nav>
 </div>
