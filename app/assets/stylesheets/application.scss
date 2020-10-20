@@ -41,6 +41,16 @@
     box-shadow: 0;
  }
 
-.stats a:hover{
+.stats a:hover, .content a:hover, .post-author a:hover, .post-replies a:hover {
    background-color: white;
+}
+
+.tweet-org {
+   display: flex;
+   flex-direction: inherit;
+   justify-content: space-between;
+
+   .tweet-icon{
+      flex-direction: column;
+   }
 }

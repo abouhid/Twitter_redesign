@@ -21,27 +21,16 @@ class User < ApplicationRecord
                                    dependent: :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
 
+  def followed_also?(user)  
+    self.follower_ids
+    
+
+  end
+
   def following?(other_user)
     relationships.find_by_followed_id(other_user)
   end
 
-  def not_followed(user) def following?(other_user)
-    relationships.find_by_followed_id(other_user)
-  end
-
-  def not_followed(user)
-    User.where.not(follower_id: user)
-  end
-
-  def follow!(other_user)
-    relationships.create!(followed_id: other_user.id)
-  end
-
-  def unfollow!(other_user)
-    relationships.find_by_followed_id(other_user.id).destroy
-  end
-    User.where.not(follower_id: user)
-  end
 
   def follow!(other_user)
     relationships.create!(followed_id: other_user.id)

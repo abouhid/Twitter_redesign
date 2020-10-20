@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.1'
+gem 'gravtastic'
 
 gem 'bulma-rails', '~> 0.9.0'
 gem 'devise'

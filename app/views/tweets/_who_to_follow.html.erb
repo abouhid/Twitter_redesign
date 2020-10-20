@@ -1,4 +1,4 @@
-<div class="column is-one-quarter">
+<div class="column is-one-quarter pl-0 pr-6 py-5">
   <nav class="panel">
         <p class="panel-heading">Who To Follow</p>
         <% @users.sort_by(&:created_at).reverse_each.each do |user| %>
@@ -13,8 +13,12 @@
             </div>
             <div class="media-content">
             <div class="content">
-             <%= link_to user.name, user_path(user) %><br>
-              <small><%= link_to user.username, user_path(user) %></small><br />
+             <%= link_to user.username, user_path(user) %><br>
+             <% if current_user.following?(user) %>
+              <small>Followed by:
+              <%= user.followed_also?%>
+               <%#= link_to user.username, user_path(user) %></small><br />
+              <%end %>
                 </p>
             </div>
             </div>

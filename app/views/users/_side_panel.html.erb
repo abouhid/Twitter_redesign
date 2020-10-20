@@ -5,7 +5,7 @@
         <div class="prof-pic">
          <%= gravatar_image_tag(current_user.email, size: 64, alt: current_user.name) %>
         
-        <%= link_to 'PROFILE', root_path, class: "navbar-item" %>   </div>
+        <%= link_to 'PROFILE', user_path(current_user), class: "navbar-item" %>   </div>
         <nav class="level is-mobile">
 
   <div class="panel-block has-text-centered">
@@ -24,9 +24,8 @@
 </nav>
 <div class="side-links">
         <a href="#" ><%= link_to 'HOME', root_path, class: "navbar-item" %></a>
-        <a href="#" ><%= link_to 'CONNECT', root_path, class: "navbar-item" %></a>
+        <a href="#" ><%= link_to 'CONNECT', users_path, class: "navbar-item" %></a>
         <a href="#" ><%= link_to 'DISCOVER', root_path, class: "navbar-item" %></a>
-        <a href="#" ><%= link_to 'PROFILE', root_path, class: "navbar-item" %></a>       
 
         </div>
           <% end%>

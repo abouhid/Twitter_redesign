@@ -5,6 +5,8 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @tweets = Tweet.all.order('created_at DESC')
+    @tweet = Tweet.new
   end
 
   def show

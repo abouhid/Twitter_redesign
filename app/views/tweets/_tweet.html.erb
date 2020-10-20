@@ -1,0 +1,62 @@
+  <div class="box">
+
+      <% @tweets.each do |tweet| %>
+      <%# if current_user.following?(tweet.user) || tweet.user == current_user %>
+
+      <article class="media">
+          <div class="media-left">
+              <figure class="image is-64x64">
+                  <%= gravatar_image_tag(tweet.user.email, size: 64, alt: tweet.user.name) %>
+
+
+              </figure>
+          </div>
+
+          <div class="media-content">
+              <div class="content tweet-org">
+                  <div>
+                      <%= link_to tweet.user.name, user_path(tweet.user), class: 'post-author' %><br>
+                      <small><%= link_to tweet.user.username, user_path(tweet.user), class: 'post-author' %></small><br />
+
+                      <p><%= tweet.content %></p>
+                  </div>
+                  <div class="tweet-icon">
+                      <%= link_to tweet, class: 'level-item' do %>
+                      <span class="icon">
+                          <i class="fa fa-link" aria-hidden="true"></i>
+                      </span>
+                      <% end %>
+                      <%= link_to edit_tweet_path(tweet), class: 'level-item' do %>
+                      <span class="icon">
+                          <i class="fa fa-pencil" aria-hidden="true"></i>
+                      </span>
+                      <% end %>
+                      <%= link_to tweet, method: :delete, data: {confirm: "Are you sure you want to delete this tweet?"}, class: 'level-item' do %>
+                      <span class="icon">
+                          <i class="fa fa-trash-o" aria-hidden="true"></i>
+                      </span>
+                      <% end %></div>
+              </div>
+              <nav class="level">
+
+                  <div class='post-comments-section'>
+                      <div>
+                          <%= render partial: 'replies/reply', collection: tweet.replies %></div>
+
+                      <%= form_for(tweet.replies.new, url: tweet_replies_path(tweet)) do |form| %>
+                      <%= form.text_field :content, label: "Tweet about it", input_html: { class: "input "},
+                                                  wrapper: false, label_html: {class: "label"}, placeholder: "What's on your mind?",
+                                                  autofocus: true %>
+                      <%#= form.text_field :content, id: :reply_content, class: 'form-control', placeholder: 'Add new reply' %><br>
+                      <%= form.button :submit, class: "button is-primary mt-1" %>
+                      <% end %>
+                  </div>
+
+              </nav>
+          </div>
+
+      </article>
+      <% end %>
+
+      <%# end %>
+  </div>

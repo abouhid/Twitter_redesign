@@ -1,7 +1,10 @@
 <li>
-  <% unless current_user.id == user.id %>
-  Name: <%= user.name %>
-  <span class="profile-link">
+  <%# unless current_user.id == user.id %>
+  <%= user.username %> 
+  <%#= render 'follow_form' %>
+  <%
+=begin%>
+ <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
     <% unless friend_or_friendship_requested(user, current_user) %>
       <%= link_to 'Add Friend', friendships_path(user_id: user.id), method: :post %>
@@ -11,7 +14,9 @@
       <a>| &nbsp &nbsp Accept Friend Request:</a>
       <%= render "friend_request" %>
     <% end %> 
-  </span>
-  <% end %>
+  </span>   <% end %>
+<%
+=end%>
+
 
 </li>

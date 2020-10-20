@@ -1,18 +1,11 @@
-<% provide(:title, @user.name) %>
-<div class="row">
-  <aside class="span4">
-    <section>
-      <h1>
-        <%#=image_tag(gravatar_url(@user.email)) %>
-        <%= @user.name %>
-      </h1>
-    </section>
-    <section>
-      <%= render 'shared/stats' %>
-    </section>
-  </aside>
-  <div class="span8">
-    <%= render 'follow_form' if signed_in? %>
-  
-  </div>
-</div>
+<section class="user-section">
+  <h2><%= "Name: #{@user.name}" %></h2>
+
+    <article class="timeline">
+   
+    <h3>Recent posts:</h3>
+    <ul class="posts">
+      <%= render @tweets %>
+    </ul>
+  </article>
+</section>
