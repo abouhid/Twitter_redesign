@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module TweetsHelper
   def custom_timeline
     friends = current_user.followed_users

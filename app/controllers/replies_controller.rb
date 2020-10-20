@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class RepliesController < ApplicationController
   def new
     @reply = Reply.find(params[:id])

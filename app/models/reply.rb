@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Reply < ApplicationRecord
   attr_accessor :name
   validates :content, presence: true, length: { maximum: 200,

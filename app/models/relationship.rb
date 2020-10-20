@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Relationship < ApplicationRecord
   # attr_accessible :followed_id
 

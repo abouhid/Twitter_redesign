@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module ApplicationHelper
   def following?(other_user)
     relationships.find(other_user)
