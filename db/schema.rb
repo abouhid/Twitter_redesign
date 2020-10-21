@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2020_10_21_165114) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "likes", force: :cascade do |t|
     t.integer "tweet_id"
     t.integer "user_id"
