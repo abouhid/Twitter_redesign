@@ -17,7 +17,6 @@ class TweetsController < ApplicationController
     @likes = Like.all
     @users = User.all
     @tweets = Tweet.all.order('created_at DESC')
-  
   end
 
   # GET /tweets/new

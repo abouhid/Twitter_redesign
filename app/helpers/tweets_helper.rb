@@ -12,8 +12,4 @@ module TweetsHelper
     end
     friends
   end
-
-  def following?(other_user)
-    relationships.find(other_user)
-  end
 end

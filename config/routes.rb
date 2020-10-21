@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :replies, only: %i[create destroy]
     resources :likes, only: %i[create destroy]
   end
-  
+
   resources :users do
     member do
       get :following, :followers
