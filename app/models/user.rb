@@ -31,14 +31,6 @@ class User < ApplicationRecord
     relationships.find_by_followed_id(other_user.id).destroy
   end
 
-  def show_followers
-    User.first.followed_user_ids.join(', ')
-
-    # Relationship.where()
-    # test = relationships.find_by_followed_id(self)
-    # test
-  end
-
   attr_writer :login
 
   def login

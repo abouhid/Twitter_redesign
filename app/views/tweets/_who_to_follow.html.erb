@@ -3,8 +3,7 @@
     <nav class="panel">
         <p class="panel-heading">Who To Follow</p>
 
-        <% @users.sort_by(&:created_at).reverse_each.each do |user| %>
-        <% unless current_user.following?(user) || current_user == user %>
+        <% @not_followed.each do |user| %>
         <article class="media">
             <div class="justify column">
             <div class="is-flex">
@@ -26,7 +25,6 @@
                 </div>
             </div>
         </article>
-        <%end %>
         <%end %>
     </nav>
 </div>

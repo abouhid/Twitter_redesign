@@ -5,10 +5,14 @@ class TweetsController < ApplicationController
   # GET /tweets
   # GET /tweets.json
   def index
-    @likes = Like.all
-    @users = User.all
-    @tweets = Tweet.all.order('created_at DESC')
-    @tweet = Tweet.new
+     @likes = Like.all
+    @tweets = Tweet.all.order('created_at DESC').includes(%i[user replies])
+    @users = User.order('created_at DESC').includes(%i[followed_users followers replies])
+    if current_user
+      @tweet = current_user.tweets.new
+      @not_followed = User.all.order('created_at DESC') - current_user.followed_users
+      @not_followed.delete(current_user)
+    end
   end
 
   # GET /tweets/1

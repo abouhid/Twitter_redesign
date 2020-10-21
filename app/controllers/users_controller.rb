@@ -2,9 +2,8 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @users = User.all
-    @tweets = Tweet.all.order('created_at DESC')
-    @tweet = Tweet.new
+    @users = User.all.includes(%i[replies tweets likes followed_users followers])
+   
   end
 
   def show
