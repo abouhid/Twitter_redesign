@@ -94,13 +94,13 @@ Rails.application.configure do
   # Inserts middleware to perform automatic connection switching.
   # The `database_selector` hash is used to pass options to the DatabaseSelector
   # middleware. The `delay` is used to determine how long to wait after a write
-  # to send a subsequent read to the primary.
+  # to send a subsequent read to the info.
   #
   # The `database_resolver` class is used by the middleware to determine which
   # database is appropriate to use based on the time delay.
   #
   # The `database_resolver_context` class is used by the middleware to set
-  # timestamps for the last write to the primary. The resolver uses the context
+  # timestamps for the last write to the info. The resolver uses the context
   # class timestamps to determine how long to wait before reading from the
   # replica.
   #
