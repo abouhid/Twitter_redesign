@@ -1,7 +1,7 @@
 require 'rails_helper.rb'
 require 'spec_helper'
 
-describe 'the signin process', type: :feature do
+describe 'the tweeting process', type: :feature do
   before :each do
     @test_user1 = User.create!({ fullname: 'Kelyn',
                                   username: 'kells',

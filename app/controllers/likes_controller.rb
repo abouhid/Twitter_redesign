@@ -1,6 +1,7 @@
 class LikesController < ApplicationController
   def create
     @like = current_user.likes.new(tweet_id: params[:tweet_id])
+    @tweets = Tweet.all.order('created_at DESC').includes(%i[user replies])
 
     if @like.save
       redirect_to request.referrer, notice: 'You liked a tweet.'
