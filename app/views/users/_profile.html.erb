@@ -1,0 +1,44 @@
+<div class="column wtf-panel pl-0 pr-6 py-5">
+    <nav class="panel">
+        <article class="px-1 py-2 wtf">
+            <div class="media-content ">
+                <figure class="image is-64x64">
+                    <%= gravatar_image_tag(@user.email, size: 64, alt: @user.fullname) %>
+                </figure>
+                <p class="  "><%= @user.fullname  %></p>
+                <p class="  ">@<%= @user.username  %></p>
+                <% unless current_user== @user %>
+                <%= render 'follow_form' %>
+                <%end %>
+            </div>
+
+            <div class="wtf-f media-content mt-2">
+                <div class="">
+                    <p class="heading">Tweets</p>
+                    <p class="has-text-centered	 "><%= @user.tweets.count  %></p>
+                </div>
+                <div class="">
+                    <p class="heading">Following</p>
+                    <p class=" has-text-centered	"><%= @user.followed_users.count  %></p>
+                </div>
+                <div class="">
+                    <p class="heading">Followers</p>
+                    <p class="has-text-centered	"><%= @user.followers.count  %></p>
+                </div>
+            </div>
+
+            <div class="followed">
+                <small>Followed by:</small><br>
+                <% @user.followers.each do |user| %>
+                <% unless user == current_user %>
+                <br>
+                <%= link_to user.fullname, user_path(user), class: 'post-author' %></small><br />
+                                   
+                      <small>@<%= link_to user.username, user_path(user), class: 'post-author' %></small><br />
+                                   <%end %>
+
+                <%end %>
+            </div>
+        </article>
+    </nav>
+</div>

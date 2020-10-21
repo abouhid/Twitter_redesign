@@ -24,15 +24,13 @@
     </div>
     <% end %>
     <div class="columns">
-        <div class="side-panel px-0 py-0">
-            <%= render 'tweets/side_panel' %>
+        <div class="side-panel px-2 py-2">
+            <%= render 'users/side_panel' %>
         </div>
     <div class='column px-0'>
         <nav class="navbar is-primary">
             <div class="navbar-brand">
-                <%= link_to root_path, class: "navbar-item" do %>
-                <h1 class="title is-5">Tweetify</h1>
-                <% end %>
+              
                 <div class="navbar-burger burger" data-target="navbarExample">
                     <span></span>
                     <span></span>
@@ -43,12 +41,12 @@
             <div id="navbarExample" class="navbar-menu">
                 <div class="navbar-end">
                     <div class="navbar-item">
-                        <div class="field is-grouped mb-0">
+                        <div class="field is-grouped mb-0 px-2">
 
 
                             <% if user_signed_in? %>
                             <p class="control user_name">
-                                <%= link_to current_user.name, edit_user_registration_path, class: "button is-primary " %>
+                                <%= link_to current_user.fullname, user_path(current_user), class: "button is-primary " %>
                             </p>
                             <p>
                                 <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"button is-danger" %>

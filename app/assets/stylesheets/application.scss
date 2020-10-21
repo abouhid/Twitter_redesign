@@ -17,13 +17,142 @@
  @import "bulma";
 
  .side-panel {
-    width: 15%;
+    width: 17%;
     background-color: hsl(0, 0%, 21%);
+    min-height: 603px;
+     a {
+      color:white;
+   }
  }
+
+.prof-pic {
+    align-items: stretch;
+    display: flex;
+    a {
+       width:59%
+    }
+}
+
+.no-border {
+   border-radius: 0;
+}
+
+.followed {
+   // background-color: white;
+   //  border-radius: 6px;
+   //  box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
+    color: #4a4a4a;
+   //  display: block;
+    padding: 1.25rem 1.25rem 0 1.25rem;
+    align-self: self-start;
+}
+
+.profile-pic img{
+   height: 15em;
+   width: 100%;
+}
+
  .panel-block {
      border-bottom:0!important;
      color:white;
  }
+
  .panel {
     box-shadow: 0;
  }
+
+// .stats a:hover, .content a:hover, .post-author a:hover, .post-replies a:hover {
+   a:hover {
+   background-color: white;
+}
+
+.level-item .icon {
+   font-size: 18px;
+}
+
+.like {
+   align-items: flex-end;
+   justify-content: space-between;
+}
+
+.likke {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-around;
+   align-items: center;
+  
+}
+
+.likes {
+   font-size: 30px; 
+}
+
+.post-replies {
+   background-color: white;
+    border-radius: 6px;
+    box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
+    color: #4a4a4a;
+    display: block;
+    padding: 0.7rem;
+    min-width: fit-content;
+
+   .tweet-icon {
+      display: flex;
+    flex-direction: row-reverse;
+   }
+}
+
+.justify {
+  
+   width: -webkit-fill-available;
+}
+
+.tweet-org {
+   display: flex;
+   flex-direction: inherit;
+   justify-content: space-between;
+
+   .tweet-icon{
+      flex-direction: row;
+   }
+}
+
+.reply-input input {
+   box-shadow: inset 0 0.0625em 0.125em rgba(10, 10, 10, 0.05);
+    max-width: 100%;
+    width: 60%;
+    background-color: white;
+    border-radius: 4px;
+    color: #363636;
+    -webkit-appearance: none;
+    align-items: center;
+    border: 1px solid  #dbdbdb;
+    display: inline-flex;
+    font-size: 1rem;
+    height: 2.5em;
+    justify-content: flex-start;
+    line-height: 1.5;
+    padding-bottom: calc(0.5em - 1px);
+    padding-left: calc(0.75em - 1px);
+    padding-right: calc(0.75em - 1px);
+    padding-top: calc(0.5em - 1px);
+    position: relative;
+    vertical-align: top;
+}
+
+.wtf-panel {
+   flex: none;
+   width: 30%;
+}
+
+.wtf {
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+
+   .wtf-f {
+      display: flex;
+    justify-content: space-evenly;
+    width: -webkit-fill-available;
+   }
+}
