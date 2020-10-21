@@ -3,9 +3,9 @@
         <article class="px-1 py-2 wtf">
             <div class="media-content ">
                 <figure class="image is-64x64">
-                    <%= gravatar_image_tag(@user.email, size: 64, alt: @user.name) %>
+                    <%= gravatar_image_tag(@user.email, size: 64, alt: @user.fullname) %>
                 </figure>
-                <p class="  "><%= @user.name  %></p>
+                <p class="  "><%= @user.fullname  %></p>
                 <p class="  ">@<%= @user.username  %></p>
                 <% unless current_user== @user %>
                 <%= render 'follow_form' %>
@@ -32,7 +32,7 @@
                 <% @user.followers.each do |user| %>
                 <% unless user == current_user %>
                 <br>
-                <%= link_to user.name, user_path(user), class: 'post-author' %></small><br />
+                <%= link_to user.fullname, user_path(user), class: 'post-author' %></small><br />
                                    
                       <small>@<%= link_to user.username, user_path(user), class: 'post-author' %></small><br />
                                    <%end %>

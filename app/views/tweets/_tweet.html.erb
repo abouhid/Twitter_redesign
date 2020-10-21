@@ -6,7 +6,7 @@
       <article class="media">
           <div class="media-left">
               <figure class="image is-64x64">
-                  <%= gravatar_image_tag(tweet.user.email, size: 64, alt: tweet.user.name) %>
+                  <%= gravatar_image_tag(tweet.user.email, size: 64, alt: tweet.user.fullname) %>
 
               </figure>
           </div>
@@ -14,7 +14,7 @@
           <div class="media-content">
               <div class="content tweet-org">
                   <div>
-                      <%= link_to tweet.user.name, user_path(tweet.user), class: 'post-author' %><br>
+                      <%= link_to tweet.user.fullname, user_path(tweet.user), class: 'post-author' %><br>
                       <small>@<%= link_to tweet.user.username, user_path(tweet.user), class: 'post-author' %></small><br />
 
                       <div class="is-flex is-justify-content-space-between like">

@@ -5,7 +5,7 @@
 
   <div class="form-inputs">
   <%- attributes.each do |attribute| -%>
-    <%%= f.<%= attribute.reference? ? :association : :input %> :<%= attribute.name %> %>
+    <%%= f.<%= attribute.reference? ? :association : :input %> :<%= attribute.fullname %> %>
   <%- end -%>
   </div>
 

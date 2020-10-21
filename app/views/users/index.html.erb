@@ -15,7 +15,7 @@
         <div class="media-content">
             <div class="content">
 
-                <%= link_to user.name, user_path(user), class: 'post-author' %><br>
+                <%= link_to user.fullname, user_path(user), class: 'post-author' %><br>
                 <small><%= link_to user.username, user_path(user), class: 'post-author' %></small><br />
 
                 <%#= render 'follow_form' %>

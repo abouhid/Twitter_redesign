@@ -24,7 +24,7 @@
     </div>
     <% end %>
     <div class="columns">
-        <div class="side-panel px-0 py-0">
+        <div class="side-panel px-2 py-2">
             <%= render 'users/side_panel' %>
         </div>
     <div class='column px-0'>
@@ -46,7 +46,7 @@
 
                             <% if user_signed_in? %>
                             <p class="control user_name">
-                                <%= link_to current_user.name, user_path(current_user), class: "button is-primary " %>
+                                <%= link_to current_user.fullname, user_path(current_user), class: "button is-primary " %>
                             </p>
                             <p>
                                 <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"button is-danger" %>

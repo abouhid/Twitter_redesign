@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: { case_sensitive: false }
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, multiline: true
 
-  has_many :tweets, dependent: :destroy
+  has_many :tweets, dependent: :destroy, foreign_key: :author_id
   has_many :replies, dependent: :destroy
   has_many :likes, dependent: :destroy
 

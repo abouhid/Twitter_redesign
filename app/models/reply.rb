@@ -1,5 +1,5 @@
 class Reply < ApplicationRecord
-  attr_accessor :name
+  attr_accessor :fullname
   validates :content, presence: true, length: { maximum: 200,
                                                 too_long: '200 characters in comment is the maximum allowed.' }
 
