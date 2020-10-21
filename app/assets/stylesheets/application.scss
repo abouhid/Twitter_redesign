@@ -33,6 +33,20 @@
     }
 }
 
+.no-border {
+   border-radius: 0;
+}
+
+.followed {
+   // background-color: white;
+   //  border-radius: 6px;
+   //  box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
+    color: #4a4a4a;
+   //  display: block;
+    padding: 1.25rem 1.25rem 0 1.25rem;
+    align-self: self-start;
+}
+
 .profile-pic img{
    height: 15em;
    width: 100%;
@@ -47,7 +61,8 @@
     box-shadow: 0;
  }
 
-.stats a:hover, .content a:hover, .post-author a:hover, .post-replies a:hover {
+// .stats a:hover, .content a:hover, .post-author a:hover, .post-replies a:hover {
+   a:hover {
    background-color: white;
 }
 
@@ -63,10 +78,17 @@
     color: #4a4a4a;
     display: block;
     padding: 0.7rem;
+    min-width: fit-content;
+
    .tweet-icon {
       display: flex;
     flex-direction: row-reverse;
    }
+}
+
+.justify {
+  
+   width: -webkit-fill-available;
 }
 
 .tweet-org {

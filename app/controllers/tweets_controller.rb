@@ -12,7 +12,12 @@ class TweetsController < ApplicationController
 
   # GET /tweets/1
   # GET /tweets/1.json
-  def show; end
+  def show
+    @users = User.all
+    @tweets = Tweet.all.order('created_at DESC')
+    @user = User.find(params[:id])
+  
+  end
 
   # GET /tweets/new
   def new

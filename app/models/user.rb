@@ -31,6 +31,14 @@ class User < ApplicationRecord
     relationships.find_by_followed_id(other_user.id).destroy
   end
 
+  def show_followers 
+    User.first.followed_user_ids.join(', ')
+
+    # Relationship.where()
+    # test = relationships.find_by_followed_id(self)
+    # test
+  end
+
   attr_writer :login
 
   def login
@@ -39,7 +47,7 @@ class User < ApplicationRecord
 
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
-    if login == conditions.delete(:login)
+    if login = conditions.delete(:login)
       where(conditions.to_h).where(['lower(username) = :value OR lower(email) = :value',
                                     { value: login.downcase }]).first
     elsif conditions.key?(:username) || conditions.key?(:email)

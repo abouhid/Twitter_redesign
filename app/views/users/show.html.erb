@@ -3,21 +3,20 @@
  <div class="column px-5">
 
 <section class="users-section">
-  <div class="media-left">
+  <div class="media-left mr-0 pt-3">
               <figure class="image profile-pic">
                   <%= gravatar_image_tag(@user.email, size: 64, alt: @user.name) %>
 
               </figure>
-                <%= @user.username %> 
 
           </div>
 
- <% unless current_user== @user %>
-  <%= render 'follow_form' %>
-  <%end %>
+
     <article class="timeline">
-   
-    <h3 class="title mt-2">Recent posts:</h3>
+       <ul class="posts">
+    
+
+    <h3 class="box title mb-0 no-border">All Tweets</h3>
     <ul class="posts">
     <% unless @user.tweets.empty? %>
       <%= render 'tweets/tweet' %>

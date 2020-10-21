@@ -14,11 +14,7 @@
             <div class="media-content">
             <div class="content">
              <%= link_to user.username, user_path(user) %><br>
-             <% if current_user.following?(user) %>
-              <small>Followed by:
-              <%= user.followed_also?%>
-               <%#= link_to user.username, user_path(user) %></small><br />
-              <%end %>
+           
                 </p>
             </div>
             </div>

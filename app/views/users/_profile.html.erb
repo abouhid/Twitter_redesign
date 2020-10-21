@@ -6,24 +6,39 @@
                     <%= gravatar_image_tag(@user.email, size: 64, alt: @user.name) %>
                 </figure>
                 <p class="  "><%= @user.name  %></p>
-                <p class="  "><%= @user.username  %></p>
+                <p class="  ">@<%= @user.username  %></p>
+                <% unless current_user== @user %>
+                <%= render 'follow_form' %>
+                <%end %>
             </div>
 
-                <div class="wtf-f media-content mt-2">
-                    <div class="">
-                        <p class="heading">Tweets</p>
-                        <p class="has-text-centered	 "><%= @user.tweets.count  %></p>
-                    </div>
-                    <div class="">
-                        <p class="heading">Following</p>
-                        <p class=" has-text-centered	"><%= @user.followed_users.count  %></p>
-                    </div>
-                    <div class="">
-                        <p class="heading">Followers</p>
-                        <p class="has-text-centered	"><%= @user.followers.count  %></p>
-                    </div>
+            <div class="wtf-f media-content mt-2">
+                <div class="">
+                    <p class="heading">Tweets</p>
+                    <p class="has-text-centered	 "><%= @user.tweets.count  %></p>
                 </div>
+                <div class="">
+                    <p class="heading">Following</p>
+                    <p class=" has-text-centered	"><%= @user.followed_users.count  %></p>
+                </div>
+                <div class="">
+                    <p class="heading">Followers</p>
+                    <p class="has-text-centered	"><%= @user.followers.count  %></p>
+                </div>
+            </div>
 
+            <div class="followed">
+                <small>Followed by:</small><br>
+                <% @user.followers.each do |user| %>
+                <% unless user == current_user %>
+                <br>
+                <%= link_to user.name, user_path(user), class: 'post-author' %></small><br />
+                                   
+                      <small>@<%= link_to user.username, user_path(user), class: 'post-author' %></small><br />
+                                   <%end %>
+
+                <%end %>
+            </div>
         </article>
     </nav>
 </div>
