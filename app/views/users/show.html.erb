@@ -1,33 +1,31 @@
 <div class="columns">
- 
- <div class="column px-5">
 
-<section class="users-section">
-  <div class="media-left mr-0 pt-3">
-              <figure class="image profile-pic">
-                  <%= gravatar_image_tag(@user.email, size: 64, alt: @user.name) %>
+    <div class="column px-5">
 
-              </figure>
-
-          </div>
-
-
-    <article class="timeline">
-       <ul class="posts">
-    
-
-    <h3 class="box title mb-0 no-border">All Tweets</h3>
-    <ul class="posts">
-    <% unless @user.tweets.empty? %>
-      <%= render 'tweets/tweet' %>
-        <%else %>
-      <p>This user does not have posts.</p>
-        <%end %>
-
-    </ul>
-  </article>
-</section>
+        <section class="users-section">
+            <div class="media-left mr-0 pt-3">
+                <figure class="image profile-pic">
+                    <%= gravatar_image_tag(@user.email, size: 64, alt: @user.name) %>
+                </figure>
+            </div>
+            <article class="timeline">
+                <ul class="posts">
+                    <h3 class="box title mb-0 no-border">All Tweets</h3>
+                    <ul class="posts">
+                        <%if current_user.following?(@user)%>
+                            <% if @user.tweets.empty? %>
+                        <p class="box">This user does not have posts.</p>
+                            <%else %>
+                        <%= render 'tweets/tweet' %>
+                               <%end %>
+                        <%else %>
+                        <p class="box">Follow this user to see his/her posts.</p>
+                       
+                        <%end %>
+                    </ul>
+            </article>
+        </section>
     </div>
-     <%= render 'profile' %> 
+    <%= render 'profile' %>
 
-    </div>
+</div>

@@ -1,27 +1,62 @@
+<%
+=begin%>
 <div class="column is-one-quarter pl-0 pr-6 py-5">
-  <nav class="panel">
+    <nav class="panel">
         <p class="panel-heading">Who To Follow</p>
         <% @users.sort_by(&:created_at).reverse_each.each do |user| %>
-     <% unless current_user.following?(user) || current_user == user %>
-       
+        <% unless current_user.following?(user) || current_user == user %>
+
         <div class="nav-item">
-        <article class="media">
-            <div class="media-left">
-            <figure class="image is-32x32">
-                <img src="https://bulma.io/images/placeholders/64x64.png" />
-            </figure>
-            </div>
-            <div class="media-content">
-            <div class="content">
-             <%= link_to user.username, user_path(user) %><br>
-           
-                </p>
-            </div>
-            </div>
-        </article>
+            <article class="media">
+                <div class="media-left">
+                    <figure class="image is-32x32">
+                        <img src="https://bulma.io/images/placeholders/64x64.png" />
+                    </figure>
+                </div>
+                <div class="media-content">
+                    <div class="content">
+                        <%= link_to user.username, user_path(user) %><br>
+
+                        </p>
+                    </div>
+                </div>
+            </article>
         </div>
-    <%end %>
+        <%end %>
         <%end %>
 
-  </nav>
+    </nav>
+</div>
+<%
+=end%>
+<div class="column wtf-panel pl-0 pr-6 py-5">
+    <nav class="panel">
+        <p class="panel-heading">Who To Follow</p>
+
+        <% @users.sort_by(&:created_at).reverse_each.each do |user| %>
+        <% unless current_user.following?(user) || current_user == user %>
+        <article class="media">
+            <div class="justify column">
+            <div class="is-flex">
+                <figure class="image is-32x32">
+                    <%= gravatar_image_tag(user.email, size: 64, alt: user.name) %>
+                </figure>
+                <div class="ml-2">
+                    <p> <%= link_to user.name, user_path(user) %><br>
+                    </p>
+                    <p">@ <%= link_to user.username, user_path(user) %><br>
+                    </p>
+                </div>
+                </div>
+            </div>
+            <div class="media-content">
+                <div class="content">
+
+                    </p>
+                </div>
+            </div>
+        </article>
+        <%end %>
+        <%end %>
+    </nav>
 </div>

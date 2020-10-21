@@ -17,22 +17,27 @@
                       <%= link_to tweet.user.name, user_path(tweet.user), class: 'post-author' %><br>
                       <small>@<%= link_to tweet.user.username, user_path(tweet.user), class: 'post-author' %></small><br />
 
-                      <p><%= tweet.content %></p>
+                        <div class="is-flex is-justify-content-space-between like">
+                      <p><%= tweet.content %> </p>
+                      </div>
+                                             
+
                   </div>
-                  <div class="tweet-icon"> 
-                   <%= link_to tweet, class: 'level-item' do %>
+                  <div class="tweet-icon">
+                  <%= like_or_dislike_btn(tweet) %>
+                      <%= link_to tweet, class: 'level-item' do %>
                       <span class="icon">
                           <i class="fa fa-link" aria-hidden="true"></i>
                       </span>
                       <% end %>
-                  <% if current_user==tweet.user %>
-                    
+                      <% if current_user==tweet.user %>
+
                       <%= link_to edit_tweet_path(tweet), class: 'level-item' do %>
                       <span class="icon">
                           <i class="fa fa-pencil" aria-hidden="true"></i>
                       </span>
                       <% end %>
-                     
+
 
                       <%= link_to tweet, method: :delete, data: {confirm: "Are you sure you want to delete this tweet?"}, class: 'level-item' do %>
                       <span class="icon">
@@ -54,7 +59,7 @@
                                                   autofocus: true %></div>
                           <%#= form.text_field :content, id: :reply_content, class: 'form-control', placeholder: 'Add new reply' %><br>
                           <%= form.button :submit, class: "button is-primary mt-1" %>
-                          <% end %>                
+                          <% end %>
                       </div>
                   </div>
 
