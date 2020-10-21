@@ -15,7 +15,7 @@
             </div>
             <div class="tweet-icon">
                
-                <% if current_user==@tweet.user %>
+                <% if current_user?(tweet.user) %>
 
                 <%= link_to edit_tweet_path(@tweet), class: 'level-item' do %>
                 <span class="icon">

@@ -7,6 +7,5 @@ RSpec.describe User, type: :model do
     it { should have_many(:tweets) }
     it { should have_many(:replies) }
     it { should have_many(:likes) }
-
   end
 end

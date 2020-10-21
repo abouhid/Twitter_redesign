@@ -3,7 +3,6 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all.includes(%i[replies tweets likes followed_users followers])
-   
   end
 
   def show

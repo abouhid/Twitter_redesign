@@ -5,7 +5,7 @@ class TweetsController < ApplicationController
   # GET /tweets
   # GET /tweets.json
   def index
-     @likes = Like.all
+    @likes = Like.all
     @tweets = Tweet.all.order('created_at DESC').includes(%i[user replies])
     @users = User.order('created_at DESC').includes(%i[followed_users followers replies])
     if current_user

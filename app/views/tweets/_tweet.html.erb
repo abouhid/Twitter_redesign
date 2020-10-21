@@ -1,7 +1,7 @@
   <div class="box no-border">
 
       <% @tweets.each do |tweet| %>
-      <% if current_user.following?(tweet.user) || tweet.user == current_user %>
+      <% if current_user.following?(tweet.user) || current_user?(tweet.user) %>
 
       <article class="media">
           <div class="media-left">
@@ -40,7 +40,7 @@
                           </span>
                           <% end %>
 
-                          <%= link_to tweet, method: :delete, data: {confirm: "Are you sure you want to delete this tweet?"}, class: 'level-item delete' do %>
+                          <%= link_to tweet, method: :delete, data: {confirm: "Are you sure you want to delete this tweet?"}, class: 'level-item delet' do %>
                           <span class="icon">
                               <i class="fa fa-trash-o"  aria-hidden="true"></i>
                           </span>
