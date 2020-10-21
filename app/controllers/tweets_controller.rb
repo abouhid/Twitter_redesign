@@ -5,6 +5,7 @@ class TweetsController < ApplicationController
   # GET /tweets
   # GET /tweets.json
   def index
+    @likes = Like.all
     @users = User.all
     @tweets = Tweet.all.order('created_at DESC')
     @tweet = Tweet.new
@@ -13,9 +14,9 @@ class TweetsController < ApplicationController
   # GET /tweets/1
   # GET /tweets/1.json
   def show
+    @likes = Like.all
     @users = User.all
     @tweets = Tweet.all.order('created_at DESC')
-    @user = User.find(params[:id])
   
   end
 

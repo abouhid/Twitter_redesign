@@ -19,12 +19,15 @@
 
                       <div class="is-flex is-justify-content-space-between like">
                           <p><%= tweet.content %> </p>
+                         
                       </div>
-
+ <div class="likke"><%= tweet.likes.count %>
+                      <%= like_or_dislike_btn(tweet) %></div>
 
                   </div>
                   <div class="tweet-icon is-flex">
-                      <%= like_or_dislike_btn(tweet) %>
+                  
+                  
                       <div class="mt-3">
                           <%= link_to tweet, class: 'level-item' do %>
                           <span class="icon">

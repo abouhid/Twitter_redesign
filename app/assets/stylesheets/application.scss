@@ -75,6 +75,14 @@
    justify-content: space-between;
 }
 
+.likke {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-around;
+   align-items: center;
+  
+}
+
 .likes {
    font-size: 30px; 
 }
