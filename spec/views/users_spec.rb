@@ -24,6 +24,7 @@ describe 'the signin process', type: :feature do
     @post = Tweet.create!({ author_id: @test_user1_follow.id,
                            content: 'Test post from Chuck' })
   end
+  
   it 'Display message when creating a new user' do
     visit '/users/sign_up'
     fill_in 'user_fullname', with: '123123a'

@@ -3,27 +3,33 @@ require 'spec_helper'
 
 describe 'the signin process', type: :feature do
   before :each do
-    @test_friend = User.create!({ name: 'Alex',
-                                  email: '123@gmail.com',
+    @test_user1 = User.create!({ fullname: 'Kelyn',
+                                  username: 'kells',
+                                  email: 'kelyn@gmail.com',
                                   password: '123123',
                                   password_confirmation: '123123' })
-    @test_user = User.create!({ name: 'Kelyn',
-                                email: '234@gmail.com',
+    @test_user2 = User.create!({ fullname: 'Alex',
+                                username: 'abouhid',
+                                email: 'alex@gmail.com',
                                 password: '123123',
                                 password_confirmation: '123123' })
-    @tweet = tweet.create!({ user_id: @test_friend.id,
-                           content: 'Test tweet!' })
-    visit 'users/sign_in'
-    fill_in 'user_email', with: @test_friend.email
-    fill_in 'user_password', with: @test_friend.password
-    click_button('Log in')
+    @test_user1_follow = User.create!({ fullname: 'Chuck',
+                                          username: 'chucky',
+                                          email: 'chuckster@gmail.com',
+                                          password: '123123',
+                                          password_confirmation: '123123' })
+    @relationship = Relationship.create!({ follower_id: @test_user1_follow.id,
+                                       followed_id: @test_user1.id })
+
+    @post = Tweet.create!({ author_id: @test_user1_follow.id,
+                           content: 'Test post from Chuck' })
   end
+
   it 'Display message when creating a tweet' do
-    visit '/tweets'
+    visit '/'
 
-    find('.form-control', match: :first).set('Testing first tweet!')
-    click_button('Save')
-
-    expect(page).to have_content 'tweet was successfully created.'
+    find('.input', match: :first).set('Testing first tweet!')
+    page.find("#create-tweet").click
+    expect(page).to have_content 'Tweet was successfully created.'
   end
 end
