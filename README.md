@@ -2,7 +2,7 @@
 
 # Ruby on Rails Capstone Project
 
-![App Preview](./main_page.gif)
+![App Preview](./main_page.png)
 
 > This project consists of applying all the knowledge of Ruby on Rails I have aquired through the module in order to develop a real social media app. The challenge here was starting from scratch a Twitter-like social media.
 
