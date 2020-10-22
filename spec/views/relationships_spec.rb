@@ -12,7 +12,7 @@ describe 'testing relationship features', type: :feature do
                                  email: 'alex@gmail.com',
                                  password: '123123',
                                  password_confirmation: '123123',
-                                 id: 1 })
+                                 id: 20 })
     @test_user1_follow = User.create!({ fullname: 'Chuck',
                                         username: 'chucky',
                                         email: 'chuckster@gmail.com',
@@ -35,18 +35,18 @@ describe 'testing relationship features', type: :feature do
     expect(page).to have_content 'Alex'
   end
   it 'Able to see other users in show page' do
-    visit 'users/1'
+    visit 'users/20'
     expect(page).to have_content 'Alex'
   end
 
   it 'able to follow' do
-    visit 'users/1'
+    visit 'users/20'
     find('#follow').click
     expect(page).to have_css('#unfollow')
   end
 
   it 'able to unfollow' do
-    visit 'users/1'
+    visit 'users/20'
     find('#follow').click
     find('#unfollow').click
     expect(page).to have_css('#follow')
