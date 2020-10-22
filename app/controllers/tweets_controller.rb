@@ -10,10 +10,9 @@ class TweetsController < ApplicationController
       @tweet = current_user.tweets.new
       @not_followed = User.all.order('created_at DESC') - current_user.followed_users
       @not_followed.delete(current_user)
-      
+
       ids = current_user.followed_users.ids
       ids << current_user.id
-      # @followed_and_user_tweets = @tweets.where("author_id = #{current_user.id}")
       @followed_and_user_tweets = @tweets.where(author_id: ids)
 
     end
@@ -27,17 +26,15 @@ class TweetsController < ApplicationController
       @tweet = current_user.tweets.new
       @not_followed = User.all.order('created_at DESC') - current_user.followed_users
       @not_followed.delete(current_user)
-      @followed_and_user_tweets = @tweets.where(author_id:current_user.followed_users.pluck(:id))
+      @followed_and_user_tweets = @tweets.where(author_id: current_user.followed_users.pluck(:id))
     end
   end
 
   def new
     @tweet = current_user.tweets.build
-
   end
 
   def edit; end
-
 
   def create
     @tweet = current_user.tweets.build(tweet_params)
@@ -52,7 +49,7 @@ class TweetsController < ApplicationController
       end
     end
   end
-  
+
   def update
     respond_to do |format|
       if @tweet.update(tweet_params)
