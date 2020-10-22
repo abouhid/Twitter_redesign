@@ -1,7 +1,7 @@
-  <div class="box no-border">
+ 
 
       <% @followed_and_user_tweets.each do |tweet| %>
-     
+      <div class="box no-border">
       <article class="media">
           <div class="media-left">
               <figure class="image is-64x64">
@@ -12,8 +12,8 @@
 
           <div class="media-content">
               <div class="content tweet-org mb-0">
-                  <div>
-                      <%= link_to tweet.user.fullname, user_path(tweet.user), class: 'post-author' %><br>
+                  <div class="fullname">
+                      <%= link_to tweet.user.fullname, user_path(tweet.user), class: 'fullname' %><br>
                       <small>@<%= link_to tweet.user.username, user_path(tweet.user), class: 'post-author' %></small><br />
 
                       <div class="is-flex is-justify-content-space-between like">
@@ -64,5 +64,5 @@
           </div>
 
       </article>
+        </div>
       <% end %> 
-  </div>

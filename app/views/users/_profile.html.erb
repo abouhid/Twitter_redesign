@@ -1,27 +1,28 @@
-<div class="column wtf-panel pl-0 pr-6 py-5">
-    <nav class="panel">
-        <article class="px-1 py-2 wtf">
+<div class="wtf-panel py-5">
+    <nav class="">
+        <article class=" py-2 wtf">
             <div class="media-content ">
-                <figure class="">
+                    <figure class=" thumb">
                     <%= gravatar_image_tag(@user.email, size: 64, alt: @user.fullname) %>
                 </figure>
-                <p class="  "><%= @user.fullname  %></p>
-                <p class="  ">@<%= @user.username  %></p>
+                <p><%= @user.fullname  %></p>
+                <p><small>@<%= @user.username  %></small></p>
                 <%= follow_unfollow %>
             </div>
 
             <div class="wtf-f media-content mt-2">
-                <div class="">
-                    <p class="heading">Tweets</p>
+                <div class="stat">
                     <p class="has-text-centered	 "><%= @user.tweets.count  %></p>
+                    <p class="heading">Tweets</p>
                 </div>
-                <div class="">
+                <div class="stat">
+                 <p class=" has-text-centered	"><%= @user.followed_users.count  %></p>
                     <p class="heading">Following</p>
-                    <p class=" has-text-centered	"><%= @user.followed_users.count  %></p>
+                   
                 </div>
-                <div class="">
-                    <p class="heading">Followers</p>
+                <div class="stat">
                     <p class="has-text-centered	"><%= @user.followers.count  %></p>
+                    <p class="heading">Followers</p>
                 </div>
             </div>
 
@@ -30,13 +31,13 @@
                 <% @user.followers.each do |user| %>
                 <br>
                  <div class="is-flex">
-                <figure class="image is-32x32">
+                <figure class="image is-32x32 thumb">
                     <%= gravatar_image_tag(user.email, size: 64, alt: user.fullname) %>
                 </figure>
-                <div class="ml-2">
-                    <p> <%= link_to user.fullname, user_path(user) %><br>
+                <div class="ml-2 lef">
+                    <p class="fullname"> <%= link_to user.fullname, user_path(user) %><br>
                     </p>
-                    <p>@<%= link_to user.username, user_path(user) %><br>
+                    <p class="greyy">@<%= link_to user.username, user_path(user) %><br>
                     </p>
                 </div>
                 </div>

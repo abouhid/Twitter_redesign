@@ -34,7 +34,7 @@ module ApplicationHelper
 
   def side_panel_on
     if signed_in?
-      raw("<div class='is-flex'>
+      raw("<div class='is-flex h-100 '>
         <div class='side-panel px-2 py-2'>
             #{render 'users/side_panel'}
         </div>")
