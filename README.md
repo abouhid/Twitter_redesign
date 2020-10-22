@@ -11,11 +11,13 @@
 - Ruby v2.7.0
 - Ruby on Rails v5.2.4
 
-
 ## Live Demo
 
 [Live Demo](https://twitterredesign.herokuapp.com/users/sign_in)
 
+## Video Presentation of the project
+
+[Video Presentation Link] (https://www.loom.com/share/05dfbabd7bd641d38df6b93ccffa4dde)
 
 ### Usage
 
