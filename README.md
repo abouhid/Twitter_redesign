@@ -36,6 +36,7 @@ Open Terminal
 run git clone git@github.com:abouhid/Twitter_redesign_app.git
 run cd Social_media_app
 run bundle install
+run rake db:create
 run rake db:migrate
 run rails s
 ```
