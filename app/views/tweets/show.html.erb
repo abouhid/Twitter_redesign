@@ -15,7 +15,7 @@
             </div>
             <div class="tweet-icon">
                
-                <% if current_user?(tweet.user) %>
+                <% if current_user?(@tweet.user) %>
 
                 <%= link_to edit_tweet_path(@tweet), class: 'level-item' do %>
                 <span class="icon">
@@ -43,7 +43,6 @@
                 <div class="reply-input"><%= form.text_field :content, label: "Tweet about it", input_html: { class: "input"},
                                                   wrapper: false, label_html: {class: "label"}, placeholder: "Reply this tweet.",
                                                   autofocus: true %></div>
-                <%#= form.text_field :content, id: :reply_content, class: 'form-control', placeholder: 'Add new reply' %><br>
                 <%= form.button :submit, class: "button is-info mb-2" %>
                 <% end %>
                <%= link_to 'Show', @tweet %> |

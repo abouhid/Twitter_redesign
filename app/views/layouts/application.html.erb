@@ -23,10 +23,13 @@
         <p class="alert"><%= alert %></p>
     </div>
     <% end %>
+    <% if signed_in?  %>
     <div class="columns">
         <div class="side-panel px-2 py-2">
-            <%= render 'users/side_panel' %>
+            <%= render 'users/side_panel' %>    
         </div>
+    <% end %>
+
     <div class='column px-0'>
         <nav class="navbar is-info">
             <div class="navbar-brand">
