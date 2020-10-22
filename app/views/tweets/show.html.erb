@@ -15,20 +15,7 @@
             </div>
             <div class="tweet-icon">
                
-                <% if current_user?(@tweet.user) %>
-
-                <%= link_to edit_tweet_path(@tweet), class: 'level-item' do %>
-                <span class="icon">
-                    <i class="fa fa-pencil" aria-hidden="true"></i>
-                </span>
-                <% end %>
-
-                <%= link_to @tweet, method: :delete, data: {confirm: "Are you sure you want to delete this tweet?"}, class: 'level-item' do %>
-                <span class="icon">
-                    <i class="fa fa-trash-o" aria-hidden="true"></i>
-                </span>
-                <% end %>
-                <% end %>
+                <%=edit_delete_own_tweet %>                               
             </div>
         </div>
 </div>
@@ -43,7 +30,7 @@
                 <div class="reply-input"><%= form.text_field :content, label: "Tweet about it", input_html: { class: "input"},
                                                   wrapper: false, label_html: {class: "label"}, placeholder: "Reply this tweet.",
                                                   autofocus: true %></div>
-                <%= form.button :submit, class: "button is-info mb-2" %>
+                <%= form.button :submit, class: "button is-info my-2" %>
                 <% end %>
                <%= link_to 'Show', @tweet %> |
           <%= link_to 'Back', tweets_path %> </div>

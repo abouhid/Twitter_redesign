@@ -12,4 +12,22 @@ module TweetsHelper
     end
     friends
   end
+
+  def edit_delete_own_tweet
+    if current_user?(@tweet.user)
+
+      link_to edit_tweet_path(@tweet), class: 'level-item' do
+        raw("  <span class='icon'>
+        <i class='fa fa-pencil' aria-hidden='true'></i>
+    </span>")
+        end
+
+    link_to @tweet, method: :delete, data: {confirm: "Are you sure you want to delete this tweet?"}, class: 'level-item' do 
+
+      raw("  <span class='icon'>
+        <i class='fa fa-trash-o' aria-hidden='true'></i>
+    </span>")
+     end 
+    end
+  end
 end

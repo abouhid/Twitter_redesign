@@ -41,22 +41,22 @@ module ApplicationHelper
     end
   end
 
-    def nav_bar
-      if user_signed_in?
-        raw("<p class='control user_name'>
+  def nav_bar
+    if user_signed_in?
+      raw("<p class='control user_name'>
           #{link_to current_user.fullname, user_path(current_user), class: 'button is-info '}
       </p>
       <p>
       #{link_to 'Logout', destroy_user_session_path, method: :delete, class: 'button is-danger'}
       </p>")
-      else
-        raw("
+    else
+      raw("
       <p class='control'>
           #{link_to 'Sign In', new_user_session_path, class: 'button is-info'}
       </p>
       <p class='control'>
           #{link_to 'Sign Up', new_user_registration_path, class: 'button is-info'}
       </p>")
-      end
     end
+  end
 end
