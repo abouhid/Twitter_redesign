@@ -2,41 +2,44 @@ class TweetsController < ApplicationController
   before_action :set_tweet, only: %i[show edit update destroy]
   before_action :authenticate_user!
 
-  # GET /tweets
-  # GET /tweets.json
   def index
     @likes = Like.all
     @tweets = Tweet.all.order('created_at DESC').includes(%i[user replies])
-    @users = User.order('created_at DESC').includes(%i[followed_users followers replies])
+    @users = User.order('created_at DESC').includes(%i[followed_users followers replies tweets])
     if current_user
       @tweet = current_user.tweets.new
       @not_followed = User.all.order('created_at DESC') - current_user.followed_users
       @not_followed.delete(current_user)
+      
+      ids = current_user.followed_users.ids
+      ids << current_user.id
+      # @followed_and_user_tweets = @tweets.where("author_id = #{current_user.id}")
+      @followed_and_user_tweets = @tweets.where(author_id: ids)
+
     end
   end
 
-  # GET /tweets/1
-  # GET /tweets/1.json
   def show
     @likes = Like.all
     @users = User.all
     @tweets = Tweet.all.order('created_at DESC')
+    if current_user
+      @tweet = current_user.tweets.new
+      @not_followed = User.all.order('created_at DESC') - current_user.followed_users
+      @not_followed.delete(current_user)
+      @followed_and_user_tweets = @tweets.where(author_id:current_user.followed_users.pluck(:id))
+    end
   end
 
-  # GET /tweets/new
   def new
     @tweet = current_user.tweets.build
 
-    # @tweet = Tweet.new
   end
 
-  # GET /tweets/1/edit
   def edit; end
 
-  # POST /tweets
-  # POST /tweets.json
+
   def create
-    # @tweet = Tweet.new(tweet_params)
     @tweet = current_user.tweets.build(tweet_params)
 
     respond_to do |format|
@@ -49,9 +52,7 @@ class TweetsController < ApplicationController
       end
     end
   end
-
-  # PATCH/PUT /tweets/1
-  # PATCH/PUT /tweets/1.json
+  
   def update
     respond_to do |format|
       if @tweet.update(tweet_params)
@@ -64,8 +65,6 @@ class TweetsController < ApplicationController
     end
   end
 
-  # DELETE /tweets/1
-  # DELETE /tweets/1.json
   def destroy
     @tweet = Tweet.find(params[:id])
     @tweet.destroy
@@ -77,12 +76,10 @@ class TweetsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_tweet
     @tweet = Tweet.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
   def tweet_params
     params.require(:tweet).permit(:content)
   end

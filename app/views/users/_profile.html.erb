@@ -7,9 +7,7 @@
                 </figure>
                 <p class="  "><%= @user.fullname  %></p>
                 <p class="  ">@<%= @user.username  %></p>
-                <% unless current_user== @user %>
-                <%= render 'follow_form' %>
-                <%end %>
+                <%= follow_unfollow %>
             </div>
 
             <div class="wtf-f media-content mt-2">
