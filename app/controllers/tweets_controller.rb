@@ -63,7 +63,6 @@ class TweetsController < ApplicationController
   end
 
   def destroy
-    @tweet = Tweet.find(params[:id])
     @tweet.destroy
     respond_to do |format|
       format.html { redirect_to request.referrer, notice: 'Tweet was successfully destroyed.' }
