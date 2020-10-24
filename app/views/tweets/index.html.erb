@@ -1,27 +1,25 @@
-<p id="notice"><%= notice %></p>
+<div class="is-flex h-10">
+ 
+ <div class="column px-5">
 
-<h1>Tweets</h1>
+    <div class="py-2">
+        <article class="media box">
+            <figure class="media-left">
+                <p class="image is-64x64">
+                    <%= gravatar_image_tag(current_user.email, size: 64, alt: current_user.fullname) %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+                </p>
+            </figure>
+            <div class="media-content">
+                <%= render 'form' %>
+            </div>
+        </article>
+    </div>
+    
+<%= render 'tweets/tweet' %>
 
-  <tbody>
-    <% @tweets.each do |tweet| %>
-      <tr>
-        <td><%= tweet.content %></td>
-        <td><%= link_to 'Show', tweet %></td>
-        <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
-        <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Tweet', new_tweet_path %>
+</div>
+  
+     
+ <%= render 'who_to_follow' %> 
+    </div>

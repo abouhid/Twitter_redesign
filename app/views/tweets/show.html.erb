@@ -1,9 +1,43 @@
 <p id="notice"><%= notice %></p>
+<div class="py-2">
+    <article class="media box">
+        <figure class="media-left">
+            <p class="image is-64x64">
+                <%= gravatar_image_tag(@tweet.user.email, size: 64, alt: @tweet.user.fullname) %>
+            </p>
+        </figure>
+        <div class="content tweet-org justify">
+            <div>
+                <%= link_to @tweet.user.fullname, user_path(@tweet.user), class: 'post-author' %><br>
+                <small>@<%= link_to @tweet.user.username, user_path(@tweet.user), class: 'post-author' %></small><br />
 
-<p>
-  <strong>Content:</strong>
-  <%= @tweet.content %>
-</p>
+                <p><%= @tweet.content %></p>
+            </div>
+            <div class="tweet-icon">
+               
+                <%=edit_delete_own_tweet %>                               
+            </div>
+        </div>
+</div>
 
-<%= link_to 'Edit', edit_tweet_path(@tweet) %> |
-<%= link_to 'Back', tweets_path %>
+<div class="media-content">
+
+    <nav class="block">
+        <div class='post-comments-section pl-4'>
+                <%= render partial: 'replies/reply', collection: @tweet.replies %>
+
+                <%= form_for(@tweet.replies.new, url: tweet_replies_path(@tweet)) do |form| %>
+                <div class="reply-input"><%= form.text_field :content, label: "Tweet about it", input_html: { class: "input"},
+                                                  wrapper: false, label_html: {class: "label"}, placeholder: "Reply this tweet.",
+                                                  autofocus: true %></div>
+                <%= form.button :submit, class: "button is-info my-2" %>
+                <% end %>
+               <%= link_to 'Show', @tweet %> |
+          <%= link_to 'Back', tweets_path %> </div>
+
+    </nav>
+</div>
+
+</article>
+
+</div>
