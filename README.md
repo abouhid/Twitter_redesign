@@ -33,8 +33,8 @@ Moreover, you are able to see all the users and a your profile through the 'Disc
 ### Getting Started (For Developers)
 ```
 Open Terminal
-run git clone git@github.com:abouhid/Twitter_redesign_app.git
-run cd Social_media_app
+run git clone git@github.com:abouhid/Twitter_redesign.git
+run cd Twitter_redesign
 run bundle install
 run rake db:create
 run rake db:migrate
