@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, authentication_keys: [:login]
   validates :email, uniqueness: true
   validates :username, presence: true, uniqueness: { case_sensitive: false }
-  validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, multiline: true
+  validates_format_of :username, with: /^[a-zA-Z0-9_.]*$/, multiline: true
 
   has_many :tweets, dependent: :destroy, foreign_key: :author_id
   has_many :replies, dependent: :destroy

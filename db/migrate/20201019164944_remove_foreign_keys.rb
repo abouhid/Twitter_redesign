@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class RemoveForeignKeys < ActiveRecord::Migration[6.0]
   def change
     remove_foreign_key :replies, :users
